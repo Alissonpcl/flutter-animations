@@ -8,7 +8,11 @@ class CurvedAnimationScreen extends StatefulWidget {
 
 class _CurvedAnimationScreenState extends State<CurvedAnimationScreen>
     with SingleTickerProviderStateMixin {
+
+  //Veja o comentario em HomeScreen
   AnimationController _controller;
+
+  //Veja o comentario em StaggerAnimation da Home
   Animation<double> _animation;
 
   @override
@@ -22,6 +26,9 @@ class _CurvedAnimationScreenState extends State<CurvedAnimationScreen>
     );
 
     _animation = CurvedAnimation(parent: _controller, curve: Curves.elasticOut)
+    //Com o status e possivel detectar a evolucao da animacao e programar
+    //como neste exemplo uma animacao que fica indo e voltando
+    //Os .. e como se disesse animation.addStatusListener em uma nova linha
       ..addStatusListener((status) {
         if (status == AnimationStatus.completed) {
           _controller.reverse();

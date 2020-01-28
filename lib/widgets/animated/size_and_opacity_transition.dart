@@ -5,6 +5,8 @@ class SizeAndOpacityTransition extends StatelessWidget {
   final Widget widget;
   final Animation<double> animation;
 
+  //Dois tweens diferentes para controlar intervalores de
+  //valores diferentes
   final sizeTween = Tween<double>(begin: 0, end: 300);
   final opacityTween = Tween<double>(begin: 0.1, end: 1);
 
@@ -13,6 +15,7 @@ class SizeAndOpacityTransition extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
+      //Veja StaggerAnimation da Home
       child: AnimatedBuilder(
         animation: animation,
         builder: (context, child){

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart' show timeDilation;
 import 'package:flutter_animations/screens/home/stagger_animation.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -9,6 +8,11 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
+
+  //O controller funciona como uma timeline da animacao
+  //com as funcoes de forward, backward, cancel e tempo
+  //total da animacao
+  //Definido na Screen pois e o widget que controla o estado
   AnimationController _controller;
 
   @override
@@ -18,6 +22,7 @@ class _HomeScreenState extends State<HomeScreen>
       vsync: this,
       duration: Duration(seconds: 2),
     );
+    _controller.forward();
   }
 
   @override
@@ -29,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen>
   @override
   Widget build(BuildContext context) {
     return StaggerAnimation(
-      controller: _controller,
+      controller: _controller.view,
     );
   }
 }
